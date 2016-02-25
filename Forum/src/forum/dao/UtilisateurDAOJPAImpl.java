@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * @author admin
  */
 @Repository
-public class UtilisateurDAOJPAImpl {
+public class UtilisateurDAOJPAImpl implements UtilisateurDAO{
 
     public void ajouter(Utilisateur u) {
         EntityManager em = Persistence.createEntityManagerFactory("ForumPU").createEntityManager();

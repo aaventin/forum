@@ -9,11 +9,13 @@ import forum.dao.ForumDAO;
 import forum.entity.Forum;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author admin
  */
+@Service
 public class ForumServiceImpl implements ForumService{
     
     @Autowired

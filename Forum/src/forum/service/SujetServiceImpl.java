@@ -9,12 +9,14 @@ import forum.dao.SujetDAOJPAImpl;
 import forum.entity.Sujet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author admin
  */
-public class SujetServiceImpl {
+@Service
+public class SujetServiceImpl implements SujetService{
     
     @Autowired
     SujetDAOJPAImpl dao ;

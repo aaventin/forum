@@ -5,11 +5,14 @@
  */
 package forum.service;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author admin
  */
-public class MailServiceImpl {
+@Service
+public class MailServiceImpl implements MailService{
     public void mail (String src, String dest, String titre, String contenu){
         System.out.println(titre+contenu);
     }

@@ -9,11 +9,13 @@ import forum.dao.MessageDAO;
 import forum.entity.Message;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author admin
  */
+@Service
 public class MessageServiceImpl implements MessageService{
 
     @Autowired

@@ -13,12 +13,14 @@ import forum.exception.LoginExistantException;
 import forum.exception.MailExistantException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author admin
  */
-public class UtilisateurServiceimpl {
+@Service
+public class UtilisateurServiceimpl implements UtilisateurService{
 
     @Autowired
     private UtilisateurDAO dao ;
