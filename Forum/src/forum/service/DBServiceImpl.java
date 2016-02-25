@@ -12,9 +12,9 @@ import javax.persistence.Persistence;
  *
  * @author admin
  */
-public class DBServiceImpl implements DBService{
+public class DBServiceImpl {
     
-    @Override
+   // @Override
     public void supprimerTout(){
          EntityManager em = Persistence.createEntityManagerFactory("ForumPU").createEntityManager();
          em.getTransaction().begin();
