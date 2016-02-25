@@ -5,7 +5,7 @@
  */
 package forum.service;
 
-import forum.dao.UtilisateurDAO;
+import forum.dao.UtilisateurDAOJPAImpl;
 import forum.entity.Utilisateur;
 import forum.exception.ErreurLoginOuMdpException;
 import forum.exception.LoginExistantException;
@@ -16,78 +16,30 @@ import java.util.List;
  *
  * @author admin
  */
-public class UtilisateurService {
+public interface UtilisateurService {
+   
 
-    private UtilisateurDAO dao = new UtilisateurDAO();
-    private MailService mailserv = new MailService();
-    
     /**
-     * Connexion sur base uniquement du login et du mdp, les autrechs champs ne doivent pas etre initialisés.
+     * Connexion sur base uniquement du login et du mdp, les autrechs champs ne
+     * doivent pas etre initialisés.
+     *
      * @param u
-     * @throws ErreurLoginOuMdpException 
+     * @throws ErreurLoginOuMdpException
      */
-    public void connection(String login, String mdp) throws ErreurLoginOuMdpException, Exception{
-        
-        List<Utilisateur> util1 = dao.rechercherParLogin(login);
-        if(util1.isEmpty() || !util1.get(0).getMdp().equals(mdp)){
-            throw new ErreurLoginOuMdpException();
-        }        
-        if (util1.get(0).getInscrit()==false){
-            throw new Exception();
-        }           
-        
-        System.out.println("Félicitations vous êtes connectés !!!");
-        
-    }
-    
-    public void validation(Utilisateur u){
-        u.setInscrit(Boolean.TRUE);
-        modifier(u);
-    }
+    public void connection(String login, String mdp) throws ErreurLoginOuMdpException, Exception ;
 
-    public void inscription(Utilisateur u) throws MailExistantException, LoginExistantException {
+    public void validation(Utilisateur u);
 
-        List<Utilisateur> util = dao.rechercherParMail(u.getMail());
-        List<Utilisateur> util2 = dao.rechercherParLogin(u.getLogin());
+    public void inscription(Utilisateur u) throws MailExistantException, LoginExistantException ;
 
-        // ERR si login existe
-        if (util2.isEmpty()==false) {
-            throw new LoginExistantException();
-        }
-        
-        // ERR si mail existe
-        if (util.isEmpty()==false) {
-            throw new MailExistantException();
-        }
-        
-        // Validation ok
-        
-        // Ajout d'un utilisateur
-        dao.ajouter(u);
-        MailService mailserv = new MailService();
+    public void ajouter(Utilisateur u);
 
-        mailserv.mail("admin", u.getMdp(), "Validation inscription : ", "Merci de cliquer sur le lien pour valider votre inscription");
+    public void supprimer(long id) ;
 
-    }
+    public void modifier(Utilisateur u) ;
 
-    public void ajouter(Utilisateur u) {
-        dao.ajouter(u);
-    }
+    public Utilisateur rechercherParId(long id) ;
 
-    public void supprimer(long id) {
-        dao.supprimer(id);
-    }
-
-    public void modifier(Utilisateur u) {
-        dao.modifier(u);
-    }
-
-    public Utilisateur rechercherParId(long id) {
-        return dao.rechercherParId(id);
-    }
-
-    public List<Utilisateur> listerTous() {
-        return dao.listerTous();
-    }
+    public List<Utilisateur> listerTous() ;
 
 }

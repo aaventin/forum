@@ -5,7 +5,7 @@
  */
 package forum.service;
 
-import forum.dao.SujetDAO;
+import forum.dao.SujetDAOJPAImpl;
 import forum.entity.Sujet;
 import java.util.List;
 
@@ -13,27 +13,16 @@ import java.util.List;
  *
  * @author admin
  */
-public class SujetService {
+public interface SujetService {   
     
-    SujetDAO dao = new SujetDAO();
-    
-     public void ajouter(Sujet s){
-         dao.ajouter(s);
-     }
+     public void ajouter(Sujet s);
      
-      public void supprimer (long id){
-          dao.supprimer(id);
-      }
+      public void supprimer (long id);
       
-    public void modifier (Sujet s){
-       dao.modifier(s);
-    }
+    public void modifier (Sujet s);
     
-    public Sujet rechercherParId(long id){
-        return dao.rechercherParId(id);
-    }
+    public Sujet rechercherParId(long id);
     
-     public List<Sujet> listerTous(){
-         return dao.listerTous();
-     }
+     public List<Sujet> listerTous();
+      
 }

@@ -9,8 +9,9 @@ package forum.service;
  *
  * @author admin
  */
-public interface MailService {
-    
-    public void mail (String src, String dest, String titre, String contenu);
+public class MailServiceImpl {
+    public void mail (String src, String dest, String titre, String contenu){
+        System.out.println(titre+contenu);
+    }
     
 }
