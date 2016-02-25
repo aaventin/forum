@@ -12,22 +12,18 @@ import javax.persistence.Persistence;
  *
  * @author admin
  */
-public class DBServiceImpl {
-    
-   // @Override
-    public void supprimerTout(){
-         EntityManager em = Persistence.createEntityManagerFactory("ForumPU").createEntityManager();
-         em.getTransaction().begin();
-         em.createQuery("DELETE FROM Message m").executeUpdate();
-         em.createQuery("DELETE FROM Sujet s").executeUpdate();
-         em.createQuery("DELETE FROM Forum f").executeUpdate();
-         em.createQuery("DELETE FROM Utilisateur u").executeUpdate();
-         em.getTransaction().commit();         
-         
+public class DBServiceImpl implements DBService {
+
+    @Override
+    public void supprimerTout() {
+        EntityManager em = Persistence.createEntityManagerFactory("ForumPU").createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Message m").executeUpdate();
+        em.createQuery("DELETE FROM Sujet s").executeUpdate();
+        em.createQuery("DELETE FROM Forum f").executeUpdate();
+        em.createQuery("DELETE FROM Utilisateur u").executeUpdate();
+        em.getTransaction().commit();
+
     }
-    
-   
-   
-    
-    
+
 }
