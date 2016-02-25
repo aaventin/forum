@@ -5,6 +5,8 @@
  */
 package forum.test;
 
+import forum.entity.Forum;
+import forum.entity.Message;
 import forum.service.DBService;
 import forum.service.ForumService;
 import forum.service.MailService;
@@ -43,5 +45,20 @@ public class ForumTest {
     
     @Autowired
     private UtilisateurService utilserv;
+    
+    //@Test
+    public void listerForum(){
+        for(Forum f : fserv.listerTous()){
+            System.out.println(f.getTitre());
+        }
+    }
+    
+    //@Test
+    public void listerMessage(){
+        for(Message m : mserv.listerTous()){
+            System.out.println(m.getContenu());
+        }
+    }
+      
 
 }
