@@ -7,6 +7,8 @@ package forum.test;
 
 import forum.entity.Forum;
 import forum.entity.Message;
+import forum.entity.Sujet;
+import forum.entity.Utilisateur;
 import forum.service.DBService;
 import forum.service.ForumService;
 import forum.service.MailService;
@@ -60,5 +62,26 @@ public class ForumTest {
         }
     }
       
+    
+    @Test
+    public void testUtilServOK(){
+        System.out.println("forum.test.ForumTest.testUtilServOK()");
+        for(Utilisateur u : utilserv.listerTous())        
+        System.out.println(u.getId());
+    }
+    
+    @Test
+    public void testSujetServOK(){
+        System.out.println("forum.test.ForumTest.testSujetServOK()");
+        for(Sujet s : sujetserv.listerTous())        
+        System.out.println(s.getId());
+    }
+    
+    @Test
+    public void testMailServOK(){
+        System.out.println("forum.test.ForumTest.testMailServOK()");
+     mailserv.mail("src", "dest", "Hello", "Comment ça va?");     
+        
+    }
 
 }
